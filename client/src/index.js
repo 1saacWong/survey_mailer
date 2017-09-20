@@ -7,15 +7,6 @@ import reduxThunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
-import axios from 'axios';
-window.axios = axios;
-
-const survey = {
-  title: 'my title',
-  subject: 'subject',
-  body: 'hello',
-  recipients: 'gabrielm.jaeger@yahoo.de'
-};
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
