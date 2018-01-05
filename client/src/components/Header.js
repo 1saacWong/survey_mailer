@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
+import EmailLogin from './EmailLogin';
 
 class Header extends Component {
   renderContent() {
@@ -10,14 +11,22 @@ class Header extends Component {
         return;
       case false:
         return (
-          <li>
-            <a href="/auth/google">Login With Google</a>
-          </li>
+          <div>
+            <li>
+              <a href="/auth/google">Login With Google</a>
+            </li>
+            <li>
+              <a href="/login">Login</a>
+            </li>
+            <li>
+              <a href="/signup">Signup</a>
+            </li>
+          </div>
         );
       default:
         return [
           <li key="1">
-            <Payments />
+            <a href="/uploads/new">Earn Credits</a>
           </li>,
           <li key="3" style={{ margin: '0 10px' }}>
             Credits: {this.props.auth.credits}
@@ -32,11 +41,8 @@ class Header extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link
-            to={this.props.auth ? '/surveys' : '/'}
-            className="left brand-logo"
-          >
-            Emaily
+          <Link to={'/'} className="left brand-logo">
+            ShiJia
           </Link>
           <ul className="right">{this.renderContent()}</ul>
         </div>

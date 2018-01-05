@@ -4,8 +4,14 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
+const multer = require('multer');
 require('./models/User');
 require('./models/Survey');
+require('./models/Upload');
+require('./models/Company');
+require('./models/Product');
+require('./models/Price');
+require('./models/RejectedUpload');
 //order important here. otherwise userSchema is not loaded
 require('./services/passport');
 
@@ -28,6 +34,9 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
+require('./routes/companyRoutes')(app);
+require('./routes/productRoutes')(app);
+require('./routes/priceRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   //epxress will serve up production assets

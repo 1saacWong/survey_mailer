@@ -1,2 +1,15 @@
 export const FETCH_USER = 'fetch_user';
 export const FETCH_SURVEYS = 'fetch_surveys';
+export const HIDE_REVIEW = 'hide_review';
+export const SHOW_REVIEW = 'show_review';
+export const AUTH_USER = 'auth_user';
+export const UNAUTH_USER = 'unauth_user';
+export const AUTH_ERROR = 'auth_error';
+export const FETCH_UPLOADS = 'fetch_uploads';
+export const FETCH_UPLOAD = 'fetch_upload';
+export const FETCH_COMPANIES = 'fetch_companies';
+export const FETCH_COMPANY = 'fetch_company';
+export const FETCH_PRODUCTS = 'fetch_products';
+export const FETCH_PRODUCT = 'fetch_product';
+export const FETCH_INFOS = 'fetch_infos';
+export const FETCH_PRICE = 'fetch_price';

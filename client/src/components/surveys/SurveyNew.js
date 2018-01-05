@@ -2,33 +2,31 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import SurveyForm from './SurveyForm';
 import SurveyFormReview from './SurveyFormReview';
-class SurveyNew extends Component {
-  state = { showFormReview: false };
+import * as actions from '../../actions';
 
+class SurveyNew extends Component {
+  componentDidMount() {
+    this.props.hideReview();
+  }
   renderContent() {
-    if (this.state.showFormReview) {
-      return (
-        <SurveyFormReview
-          onCancel={() => this.setState({ showFormReview: false })}
-        />
-      );
+    if (this.props.showFormReview) {
+      return <SurveyFormReview onCancel={() => this.props.showReview} />;
     }
-    return (
-      <SurveyForm
-        onSurveySubmit={() => this.setState({ showFormReview: true })}
-      />
-    );
+    return <SurveyForm onSurveySubmit={() => this.props.hideReview} />;
   }
   render() {
-    return (
-      <div>
-        {this.renderContent()}
-        Hello
-      </div>
-    );
+    return <div>{this.renderContent()}</div>;
   }
 }
 
-export default reduxForm({
-  form: 'surveyForm'
-})(SurveyNew);
+function mapStateToProps(state) {
+  return { showFormReview: state };
+}
+
+export default reduxForm(
+  {
+    form: 'surveyForm'
+  },
+  mapStateToProps,
+  actions
+)(SurveyNew);
